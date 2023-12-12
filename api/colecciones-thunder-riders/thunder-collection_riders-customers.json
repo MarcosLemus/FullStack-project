@@ -1,0 +1,99 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "riders-customers",
+    "dateExported": "2023-11-28T14:52:19.284Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f3a85e0c-1b86-4e00-a220-aa9f34b2c604",
+            "colId": "3a279532-9b00-42d8-a562-7baca4309901",
+            "containerId": "",
+            "name": "get",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-28T11:16:48.588Z",
+            "modified": "2023-11-28T12:57:27.479Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3d7ef5ee-b5a7-4520-ab10-83e885d77941",
+            "colId": "3a279532-9b00-42d8-a562-7baca4309901",
+            "containerId": "",
+            "name": "Post",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-11-28T12:17:43.461Z",
+            "modified": "2023-11-28T12:49:18.171Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\"name\": \"Papasar\",\n  \"latitude\": 23232323,\n  \"longitude\": 24244444}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9c172368-409d-48ee-b481-859dca0e9e7e",
+            "colId": "3a279532-9b00-42d8-a562-7baca4309901",
+            "containerId": "",
+            "name": "getByID",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-11-28T12:57:15.686Z",
+            "modified": "2023-11-28T14:30:03.796Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTY1ZGM3YzQwY2ZjZDRjMDg5NzAwOTgiLCJ1c2VybmFtZSI6ImFuZHJlcyIsImlhdCI6MTcwMTE4MTc2NH0.Gtlvacs32b3pmgGRz8tx-sLKC1D5rfFrWQfyDgkW-JE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5bb6d380-1040-41f3-a3ab-811fa1689d5b",
+            "colId": "3a279532-9b00-42d8-a562-7baca4309901",
+            "containerId": "",
+            "name": "PutCustormers",
+            "url": "/6565df2ad0572702e4858b29",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-11-28T13:03:11.123Z",
+            "modified": "2023-11-28T13:08:34.911Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\"name\": \"Paco aguantó\",\n  \"latitude\": 2000003,\n  \"longitude\": 200004}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a64860ff-9f42-48d9-a2e0-7f5aa3f94623",
+            "colId": "3a279532-9b00-42d8-a562-7baca4309901",
+            "containerId": "",
+            "name": "DeleteCustomer",
+            "url": "/6565df2ad0572702e4858b29",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-11-28T13:10:18.550Z",
+            "modified": "2023-11-28T13:10:37.610Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:4040/api/customers"
+        }
+    }
+}

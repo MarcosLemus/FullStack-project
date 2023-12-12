@@ -1,0 +1,97 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "riders-workdays",
+    "dateExported": "2023-11-28T14:53:23.930Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "92302434-31a5-48af-9e2b-3dfa1189e8da",
+            "colId": "8768a6d3-3a68-43d7-b740-deec3d8d38d2",
+            "containerId": "",
+            "name": "get Wotkdays",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-11-28T12:07:43.623Z",
+            "modified": "2023-11-28T13:22:20.081Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": " { \"date\": \"2018-04-02\",\n  \"visits\":\"6565daef40cfcd4c0897008c\",\n  \"rider\":\"6565c58a8ad2f94006aa76d6\" }\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "feb2ae03-e3a7-4518-aa32-42c37ee6f8b3",
+            "colId": "8768a6d3-3a68-43d7-b740-deec3d8d38d2",
+            "containerId": "",
+            "name": "get",
+            "url": "/6565daef40cfcd4c0897008c",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-11-28T12:21:33.203Z",
+            "modified": "2023-11-28T14:32:16.553Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTY1ZGM3YzQwY2ZjZDRjMDg5NzAwOTgiLCJ1c2VybmFtZSI6ImFuZHJlcyIsImlhdCI6MTcwMTE4MTg4OH0.GO41PTma_JO5p-2i4F016o8p_da5V8tcm9slO0F5m_0"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0866e9ba-053a-4761-8f3a-c696bebe9689",
+            "colId": "8768a6d3-3a68-43d7-b740-deec3d8d38d2",
+            "containerId": "",
+            "name": "getWorkdaysByID",
+            "url": "/6565db0940cfcd4c0897008e",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-11-28T13:12:56.272Z",
+            "modified": "2023-11-28T13:13:13.621Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2843932f-bd07-4f36-8a2d-1dee976c046b",
+            "colId": "8768a6d3-3a68-43d7-b740-deec3d8d38d2",
+            "containerId": "",
+            "name": "Put de workdays",
+            "url": "/6565e1b660faf365b3dc5a57",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-11-28T13:13:50.569Z",
+            "modified": "2023-11-28T13:23:36.118Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": " { \"date\": \"2048-11-02\",\n  \"visits\":\"6565daef40cfcd4c0897008c\",\n  \"rider\":\"6565c58a8ad2f94006aa76d6\" }\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "44949f4e-e2c5-4a1f-8460-5abb5acb9213",
+            "colId": "8768a6d3-3a68-43d7-b740-deec3d8d38d2",
+            "containerId": "",
+            "name": "delete",
+            "url": "",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-11-28T13:21:34.030Z",
+            "modified": "2023-11-28T13:21:34.031Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:4040/api/workdays"
+        }
+    }
+}

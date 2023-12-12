@@ -1,0 +1,253 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "countries-countries",
+    "dateExported": "2023-08-21T12:48:20.423Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5a9e6410-e119-4375-bc0d-7ba8a05daee6",
+            "colId": "96388232-3fdc-4ef1-a127-fe953ea71a60",
+            "containerId": "",
+            "name": "/countries",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-08-19T17:20:41.871Z",
+            "modified": "2023-08-19T22:53:17.766Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "region",
+                    "value": "Africa",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "search",
+                    "value": "rr",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "1",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "20",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "3007cd35-342e-420c-a5c5-de3dc8ce10e9",
+            "colId": "96388232-3fdc-4ef1-a127-fe953ea71a60",
+            "containerId": "",
+            "name": "/countries/:countryId",
+            "url": "/64e13e730914e0166d41bccb",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-19T17:22:03.190Z",
+            "modified": "2023-08-19T23:20:23.697Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "eb511230-f8d8-4c76-a25f-ad22c4f9f430",
+            "colId": "96388232-3fdc-4ef1-a127-fe953ea71a60",
+            "containerId": "",
+            "name": "/countries",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 22500,
+            "created": "2023-08-19T17:27:37.205Z",
+            "modified": "2023-08-21T12:37:09.719Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUxMWIzMjllYjFkZjk4YzQ4NzVjY2UiLCJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjkyNjIxMzc3fQ.oHHzIetTcZ1qIVdEiAkK78czr0eiASm-xKpJ6bFpOj4 "
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Italia2355359"
+                    },
+                    {
+                        "name": "population",
+                        "value": "124521"
+                    },
+                    {
+                        "name": "region",
+                        "value": "Europe"
+                    },
+                    {
+                        "name": "capital",
+                        "value": "Brussels"
+                    },
+                    {
+                        "name": "nativeName",
+                        "value": "België"
+                    },
+                    {
+                        "name": "subregion",
+                        "value": "Western Europe"
+                    },
+                    {
+                        "name": "topLevelDomain",
+                        "value": "be"
+                    },
+                    {
+                        "name": "currencies",
+                        "value": "Euro"
+                    },
+                    {
+                        "name": "laguages",
+                        "value": "Dutch"
+                    },
+                    {
+                        "name": "borders",
+                        "value": "64e13284ba26e9d4feb0e8c9"
+                    },
+                    {
+                        "name": "borders",
+                        "value": "64e12a27e0bf2e83e5293b33"
+                    },
+                    {
+                        "name": "languages",
+                        "value": "French"
+                    },
+                    {
+                        "name": "languages",
+                        "value": "German"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "flag",
+                        "value": "/Users/allamas/Downloads/flag.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "ff08a48a-29a1-424b-a760-fa9d623c1ef0",
+            "colId": "96388232-3fdc-4ef1-a127-fe953ea71a60",
+            "containerId": "",
+            "name": "/countries/:countryId",
+            "url": "/64e144a86d4de7d1e83e7513",
+            "method": "PUT",
+            "sortNum": 23750,
+            "created": "2023-08-19T21:50:57.589Z",
+            "modified": "2023-08-21T12:37:28.444Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUxMWIzMjllYjFkZjk4YzQ4NzVjY2UiLCJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjkyNjIxMzc3fQ.oHHzIetTcZ1qIVdEiAkK78czr0eiASm-xKpJ6bFpOj4 "
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Italia24555"
+                    },
+                    {
+                        "name": "population",
+                        "value": "124521"
+                    },
+                    {
+                        "name": "region",
+                        "value": "Europe"
+                    },
+                    {
+                        "name": "capital",
+                        "value": "Brussels"
+                    },
+                    {
+                        "name": "nativeName",
+                        "value": "België"
+                    },
+                    {
+                        "name": "subregion",
+                        "value": "Western Europe"
+                    },
+                    {
+                        "name": "topLevelDomain",
+                        "value": "be"
+                    },
+                    {
+                        "name": "currencies",
+                        "value": "Euro"
+                    },
+                    {
+                        "name": "laguages",
+                        "value": "Dutch"
+                    },
+                    {
+                        "name": "borders",
+                        "value": "64e13284ba26e9d4feb0e8c9"
+                    },
+                    {
+                        "name": "borders",
+                        "value": "64e12a27e0bf2e83e5293b33"
+                    },
+                    {
+                        "name": "languages",
+                        "value": "French"
+                    },
+                    {
+                        "name": "languages",
+                        "value": "German"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "flag",
+                        "value": "/Users/allamas/Downloads/600_513303494.jpg"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "745e9d1d-7940-4822-8730-f9aedf2df70b",
+            "colId": "96388232-3fdc-4ef1-a127-fe953ea71a60",
+            "containerId": "",
+            "name": "/countries/:countryId",
+            "url": "/64e1417b2768dbd2558a4e16",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-08-19T17:22:43.576Z",
+            "modified": "2023-08-21T12:40:58.805Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUxMWIzMjllYjFkZjk4YzQ4NzVjY2UiLCJ1c2VybmFtZSI6InVzZXIyIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjkyNjIxNjUxfQ.7Ygf8X9RFrqLCOCU5BBwKJszbdfNvvgZjqDe9zTuBNA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{host}}/countries"
+        },
+        "envId": "59d9a040-42c7-4abd-9b02-fdec2eadcfb2"
+    }
+}

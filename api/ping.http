@@ -1,0 +1,13 @@
+GET http://localhost:4040/ping
+
+###
+
+GET https://api-countries-q00b.onrender.com/ping
+
+###
+
+GET http://localhost:4040/api/countries
+
+###
+
+GET https://api-countries-q00b.onrender.com/api/countries

@@ -7,6 +7,7 @@ const { body } = require("express-validator");
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  email: { type: String, required: true },
   // dailyNotification: { type: Boolean, default: false},
   isAdmin: Boolean,
 });
@@ -25,6 +26,7 @@ const userValidationSchema = [
     .notEmpty()
     .withMessage("El nombre de usuario no puede estar vacío"),
   body("password").notEmpty().withMessage("La password no puede estar vacía"),
+  // body("email").notEmpty().withMessage("El email no puede estar vacío"),
 ];
 
 exports.User = User;

@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const { body } = require("express-validator");
 
-const customerSchema = new mongoose.Schema({
+const placeSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
+  description: { type: String, required: true },
   latitude: { type: String, required: true },
   longitude: { type: String, required: true },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
-const Customer = mongoose.model("Customer", customerSchema);
+const Place = mongoose.model("Place", placeSchema);
 
 const commonValidationSchema = [
   body("name")
@@ -16,20 +18,22 @@ const commonValidationSchema = [
     .custom(async (name, { req }) => {
       const filter = { name };
 
-      if (req.params.customerId) {
-        filter["_id"] = { $ne: req.params.customerId };
+      if (req.params.placeId) {
+        filter["_id"] = { $ne: req.params.placeId };
       }
 
-      const customer = await Customer.findOne(filter);
-      if (customer) throw new Error("Ya hay un cliente con ese nombre");
+      const place = await Place.findOne(filter);
+      if (place) throw new Error("Ya hay un cliente con ese nombre");
     }),
   body("latitude").isNumeric(),
   body("longitude").isNumeric(),
+  body("description").isString(),
+  body("likes.*").isMongoId().withMessage("ID no válido"),
 ];
 
-const customerUpdateValidationSchema = [...commonValidationSchema];
+const placeUpdateValidationSchema = [...commonValidationSchema];
 
-const customerValidationSchema = [
+const placeValidationSchema = [
   ...commonValidationSchema,
   // Descomentar validador de "logo" cuando se esté recibiendo la imagen.
   //   body("logo")
@@ -42,6 +46,6 @@ const customerValidationSchema = [
   //     ),
 ];
 
-exports.Customer = Customer;
-exports.customerValidationSchema = customerValidationSchema;
-exports.customerUpdateValidationSchema = customerUpdateValidationSchema;
+exports.Place = Place;
+exports.placeValidationSchema = placeValidationSchema;
+exports.placeUpdateValidationSchema = placeUpdateValidationSchema;

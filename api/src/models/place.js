@@ -7,6 +7,7 @@ const placeSchema = new mongoose.Schema({
   latitude: { type: String, required: true },
   longitude: { type: String, required: true },
   likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 const Place = mongoose.model("Place", placeSchema);
@@ -28,7 +29,7 @@ const commonValidationSchema = [
   body("latitude").isNumeric(),
   body("longitude").isNumeric(),
   body("description").isString(),
-  body("likes.*").isMongoId().withMessage("ID no válido"),
+  // body("likes.*").isMongoId().withMessage("ID no válido"),
 ];
 
 const placeUpdateValidationSchema = [...commonValidationSchema];

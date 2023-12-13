@@ -31,14 +31,6 @@ router.post(
   placeController.create
 );
 
-// router.post(
-//   "/:userId",
-//   [auth, admin],
-//   placeValidationSchema,
-//   validate,
-//   placeController.toggleFavorite
-// );
-
 router.put(
   "/:placeId",
   validateParamId("placeId"),
@@ -46,7 +38,7 @@ router.put(
   validate,
   placeController.update
 );
-router.put("/:placeId/favorite", auth, placeController.toggleFavorite);
+router.put("/:placeId/:userId/favorite", auth, placeController.toggleFavorite);
 
 router.delete(
   "/:placeId",

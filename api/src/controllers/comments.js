@@ -1,30 +1,53 @@
 const { Comment } = require("../models/comment");
 
 const getAll = async (req, res) => {
-  const comments = await Comment.find({ rider: req.user._id }).populate(
-    "visits"
-  );
+  const comments = await Comment.find();
   res.json(comments);
 };
 
 const getOne = async (req, res) => {
   const { commentId } = req.params;
-  const comment = await Comment.findById(commentId).populate("visits");
+  const comment = await Comment.findById(commentId).populate("comments");
   if (!comment) {
     return res.status(404).json({ message: "Comentario no encontrado" });
   }
   res.json(comment);
 };
 
-const create = async (req, res) => {
-  const { date, comment } = req.body;
-  const newComment = await Comment.create({
-    comment,
-    date,
-    usercoment: req.user._id,
-  });
+// const create = async (req, res) => {
+//   const { date, comment } = req.body;
+//   const placeComment = req.place._id;
 
-  res.json(newComment);
+//   const newComment = await Comment.create({
+//     comment,
+//     date,
+//     usercomment: req.user._id,
+//     placeComment,
+//   });
+
+//   res.json(newComment);
+// };
+
+const create = async (req, res) => {
+  try {
+    const { date, comment } = req.body;
+
+    // Asegúrate de que estás obteniendo el _id del lugar correctamente
+    const placeId = req.params.placeId;
+
+    // Crea un nuevo comentario asociado al lugar
+    const newComment = await Comment.create({
+      comment,
+      date,
+      usercomment: req.user._id,
+      placeComment: placeId, // Utiliza el _id del lugar como referencia
+    });
+
+    res.json(newComment);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al crear el comentario." });
+  }
 };
 
 const update = async (req, res) => {

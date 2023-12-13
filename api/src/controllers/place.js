@@ -38,10 +38,26 @@ const update = async (req, res) => {
   res.json(updatedPlace);
 };
 
-const toggleFavorite = async (req, res) => {
-  const { id: userId } = req.user;
+// const toggleFavorite = async (req, res) => {
+//   const { id: userId } = req.user;
 
-  const place = await Place.findById(req.params.placeId);
+//   const place = await Place.findById(req.params.placeId);
+
+//   const index = place.likes.indexOf(userId);
+//   place.likes =
+//     index < 0
+//       ? [...place.likes, userId]
+//       : place.likes.filter((id) => id.toString() !== userId);
+
+//   const updatedPlace = await place.save();
+
+//   res.json(updatedPlace);
+// };
+
+const toggleFavorite = async (req, res) => {
+  const { userId, placeId } = req.params;
+
+  const place = await Place.findById(placeId);
 
   const index = place.likes.indexOf(userId);
   place.likes =

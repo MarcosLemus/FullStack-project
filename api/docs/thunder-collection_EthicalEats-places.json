@@ -1,0 +1,123 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "EthicalEats-places",
+    "dateExported": "2023-12-13T14:58:15.765Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "38154578-75f2-4c4d-a1d5-77c1f4602eae",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "get",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-05T09:41:14.377Z",
+            "modified": "2023-12-05T09:41:14.377Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9ebbd6bd-5445-44b2-b2cf-6bcdb09fe5b8",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "Post",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-12-05T09:41:14.378Z",
+            "modified": "2023-12-13T11:09:21.614Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc4MWI0NjYzZmMwNzJkOTUyOGNhNDYiLCJ1c2VybmFtZSI6IlBhYmxvIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAyMzcwOTczfQ.aFdY9SwerWVrdnt_HAlwEUa3eB_782f59_w4v8JL2j4"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\"name\": \"La mandarina\",\n  \"description\": \"mandarina rica\",\n  \"latitude\": 6536425,\n  \"longitude\": 867654353}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ce64440c-475d-4087-b661-98a946152e77",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "getByID",
+            "url": "/656ef2819c64be70d718e5d0",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-12-05T09:41:14.379Z",
+            "modified": "2023-12-05T09:51:43.622Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTY1ZGM3YzQwY2ZjZDRjMDg5NzAwOTgiLCJ1c2VybmFtZSI6ImFuZHJlcyIsImlhdCI6MTcwMTE4MTc2NH0.Gtlvacs32b3pmgGRz8tx-sLKC1D5rfFrWQfyDgkW-JE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8a2ddabe-86d6-44ed-90ae-c656d03d3dc5",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "PutPlaces",
+            "url": "/656ef1159c64be70d718e5ca",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-12-05T09:41:14.380Z",
+            "modified": "2023-12-05T09:50:27.147Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\"name\": \"Paco aguantó\",\n  \"latitude\": 2000003,\n  \"longitude\": 200004}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "44dfa10f-bb5a-4b91-858c-ca6332ddd6ee",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "DeletePlaces",
+            "url": "/657990e1bb4620d7ef46056b",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-12-05T09:41:14.381Z",
+            "modified": "2023-12-13T13:40:32.762Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1d0f84b6-db92-4959-9abc-0d7d978e0aa3",
+            "colId": "ea8d5e54-6204-4f3f-91f9-abc3ddde1ecf",
+            "containerId": "",
+            "name": "likes",
+            "url": "/6579b47a4fc9e31516d07de6/6578610ef335ffac7a835bf4/favorite",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2023-12-12T16:07:54.213Z",
+            "modified": "2023-12-13T14:33:06.123Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc4N2VmYjc5ZTYzYTE1ZjEyZjc4OTAiLCJ1c2VybmFtZSI6InBlZHJvIiwiaWF0IjoxNzAyMzk3NzI1fQ.6jiSI8GnQdUps30caJS1zHFF6EYlP2KqHg-TDW-VJw8"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:4040/api/places"
+        }
+    }
+}

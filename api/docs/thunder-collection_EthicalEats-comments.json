@@ -1,0 +1,104 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "EthicalEats-comments",
+    "dateExported": "2023-12-13T14:58:53.260Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ab5b0603-e446-4f9e-b868-3796db058db0",
+            "colId": "597313da-fd8c-489a-8fda-dddb7f309e1d",
+            "containerId": "",
+            "name": "Comments",
+            "url": "/6579b47a4fc9e31516d07de6",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-12-05T09:41:14.409Z",
+            "modified": "2023-12-13T13:41:43.875Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc4NjEwZWYzMzVmZmFjN2E4MzViZjQiLCJ1c2VybmFtZSI6IlBhYmxvIiwiaWF0IjoxNzAyNDcxMzE4fQ.pwbB4k6bynP_xH6tq-LG4CZW-8ZtJj53nMlwAf1Y25k"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"date\": \"2023-04-01\",\n  \"comment\": \"Soy el comentario de pepito!!!\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f83dbfaa-4ed0-4fc0-b633-4db561b7a414",
+            "colId": "597313da-fd8c-489a-8fda-dddb7f309e1d",
+            "containerId": "",
+            "name": "get",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-12-05T09:41:14.410Z",
+            "modified": "2023-12-13T08:59:16.459Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc4NjEwZWYzMzVmZmFjN2E4MzViZjQiLCJ1c2VybmFtZSI6IlBhYmxvIiwiaWF0IjoxNzAyNDU3NjMwfQ.8U2BsL6F0UGosQZ8__-Gz8-h_GbASw1196W5uNedztE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a92d1495-5a18-4b05-914c-ea15840a75ac",
+            "colId": "597313da-fd8c-489a-8fda-dddb7f309e1d",
+            "containerId": "",
+            "name": "getCommentsByID",
+            "url": "/6565db0940cfcd4c0897008e",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-12-05T09:41:14.411Z",
+            "modified": "2023-12-05T09:41:14.411Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3cc3f27b-9c8e-49ca-8d5d-1406c239e8d7",
+            "colId": "597313da-fd8c-489a-8fda-dddb7f309e1d",
+            "containerId": "",
+            "name": "Put de comments",
+            "url": "/6579bf985e2dae80f23a8d34",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-12-05T09:41:14.412Z",
+            "modified": "2023-12-13T14:29:26.142Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"date\": \"2023-04-01\",\n  \"comment\": \"Soy el comentario de markosito!!!\"\n}\n\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "82b25ebb-f765-4306-9d59-bb220dfd2fcd",
+            "colId": "597313da-fd8c-489a-8fda-dddb7f309e1d",
+            "containerId": "",
+            "name": "delete",
+            "url": "/6579b47a4fc9e31516d07de6/6579bf385e2dae80f23a8d2d",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-12-05T09:41:14.413Z",
+            "modified": "2023-12-13T14:27:23.787Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:4040/api/comments"
+        }
+    }
+}

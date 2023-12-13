@@ -1,74 +1,84 @@
-# ANALISIS Y DISEÑO REQUISITOS PARA EL BACKEND
 
-## WIREFRAME - SITEMAP
+**Pagina web para veganos**
 
-## DATOS (Colecciones, schema, relaciones)
+En esta pagina el usuario podrá compartir sitios veganos y compartirlos para hacer una network donde estas personas puedan visitar el sitio, y dependiendo de la ciudad donde esté haya una lista actualizada de sitios donde poder comer.
+Dado la poca visibilidad que tienen.
 
-### Colecciones
+**Historias de usuarios**
 
-- users
-- countries
+-El usuario puede registrarse y acceder a las ventajas de compartir sitios
+-Un usuario anónimo que no esté registrado podrá acceder a ver los sitios y las localizaciones pero no podrán crear entradas
+-El administrador puede eliminar una localización que no vea apropiada según el contenido
+- El usuario podrá buscar localizaciones por ciudad
+- El usuario podrá ver un mapa con los sitios con más likes (destacados ) de cada lugar
+- Un usuario registrado puede compartir por redes 
+- un usuario podrá dar like a una localización
 
-### Schema
+-El navbar tiene diferentes opciones, una de ellas son las paginas por las que podrás navegar, como ciudades, y una lista de sitios por cada una de ellas.
+-Un buscador, en este buscador un usuario podrá buscar una ciudad (la que desee) y obtendrá una lista de sitios a los que ir.
+-Homepage será una ilustración mas los sitios destacados de cada lugar, mostrados en vistas de imágenes y su localización.
 
-```javascript
-// users collection
 
-{
-  "username": "user1", // required, unique
-  "password": "dc1124", // required
-  "isAdmin": true // optional
-}
 
-// coutries collection
+**Diseño API**
 
-{
-  "name": "Belgium", // required, unique
-  "population": 124521, // required
-  "region": "Europe" // required
-  "capital": "Brussels" // required
-  "nativeName": "België" // required,
-  "subregion": "Western Europe" // optional
-  "topLevelDomain": [".be"] // optional
-  "currencies": ["Euro"] // required
-  "laguages": ["Dutch", "French", "German"] // required
-  "flag": "flag.png", //required
-  "flagCloudinaryId": "125123",
-  "borders":  ["France", "Germany", "Netherlands"] // RELATION: [{countryId}]
-}
+```js
+POST /login
+POST/register
+
+GET /places ==public==
+GET /places/:placesId ==public==
+
+GET/places?search=random ==public== 
+
+POST /places ==admin== (form)
+PUT /places/:placesId ==admin== 
+DELETE /places/:placesId ==admin==
+
+GET /users/favorites/totalFavorites ==user==
+PUT/users/favorites ==user==
+
+GET /users/favorites/totalFavorites ==admin==
+PUT/users/favorites ==admin==
+
+GET /comments ==admin==
+POST /commments ==admin== 
+PUT /comments/:commentId ==admin== 
+DELETE /comment/:commentId ==admin==
+
+GET /comments ==user==
+POST /commments ==user== 
+PUT /comment/:commentId ==user== 
 ```
 
-### Relaciones
+**Modelo de datos
+Places**
 
-- "borders": countries with countries [{countryId}]
+```js
+	name: { type: String, required: true },
+	location: { type: String, required: true },
+	description: { type: String, required: true },
+	city: { type: String, required: true },
+	Likes: [{ type: mongoose.ObjectId, ref: 'User' }],
+```
 
-## DISEÑO DE LA API (ENDPOINTS, PARAMS, AUTH)
+**Modelo de datos
+Users**
 
-POST /api/users/signup {public}
-`[BODY] username, password`
+```js
+	username: { type: String, required: true },
+	password: { type: String, required: true },
+	email: { type: String, required: true },
+	isAdmin: Boolean,
+```
 
-POST /api/users/signin {public}
-`[BODY] username, password`
+**Modelo de datos
+reseñas**
 
-GET /api/countries {public}
-GET /api/countries?region=africa {public}
-GET /api/countries?search=bel {public}
-GET /api/countries?limit=20&offset=20 {public}
-`[QUERY] region`
-`[QUERY] search`
-`[QUERY] limit, offset`
+```js
+  comment: { type: String, required: true },
+  date: { type: Date, required: true },
+  userId: { type: mongoose.ObjectId, ref: "User", required: true },
+  moderate: Boolean,
+```
 
-GET /api/countries/:countryId {public}
-`[PARAM] countryid`
-
-POST /api/countries {auth}
-`[BODY] name, populationo, region, capital, nativeName, subregion*, topLevelDomain*, currencies, languages, borders`
-`[BODY MULTIPART] flag`
-
-PUT /api/countries/:countryId {auth}
-`[PARAM] countryid`
-`[BODY] name, populationo, region, capital, nativeName, subregion*, topLevelDomain*, currencies, languages, borders`
-`[BODY MULTIPART] flag`
-
-DELETE /api/countries/:countryId {auth admin}
-`[PARAM] countryid`

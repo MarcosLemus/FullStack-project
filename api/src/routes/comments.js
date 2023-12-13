@@ -34,7 +34,7 @@ router.put(
 );
 
 router.delete(
-  "/:commentId",
+  "/:placeId/:commentId",
   validateParamId("commentId"),
   validate,
   commentValidationSchema,

@@ -7,9 +7,13 @@ import {
   IconButton,
   Container,
   Avatar,
+  Input,
+  Autocomplete,
   Button,
   Tooltip,
 } from "@mui/material";
+
+import GoogleMaps from "./autocomplete";
 
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -60,7 +64,8 @@ function Navbar() {
             options={optionsMainMenu}
             onClose={() => setAnchorElNav(null)}
           />
-
+          <Input sx={{ backgroundColor: "white", borderRadius: "10px" }} />
+          {/* <GoogleMaps /> */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

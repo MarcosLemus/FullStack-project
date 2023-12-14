@@ -16,6 +16,11 @@ const fields = [
     label: "Longitud",
     type: "number",
   },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "añadir una decripción",
+  },
 ];
 
 const schema = yup
@@ -26,6 +31,7 @@ const schema = yup
       .required("Nombre obligatorio"),
     latitude: yup.number().typeError("Latitud obligatoria").required(),
     longitude: yup.number().typeError("Longitud obligatoria").required(),
+    description: yup.string().required("Descripción obligatoria"),
   })
   .required();
 

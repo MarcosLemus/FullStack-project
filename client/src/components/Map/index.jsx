@@ -1,25 +1,61 @@
+import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function Map() {
+  const [userLocation, setUserLocation] = useState(null); // Inicialmente, no conocemos la ubicación del usuario
+
+  useEffect(() => {
+    // Función para obtener la ubicación del usuario
+    const getUserLocation = async () => {
+      try {
+        if (navigator.geolocation) {
+          const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+
+          const { latitude, longitude } = position.coords;
+          setUserLocation([latitude, longitude]);
+        } else {
+          console.error("Geolocation is not supported by this browser.");
+        }
+      } catch (error) {
+        console.error("Error getting user location:", error);
+      }
+    };
+
+    getUserLocation();
+  }, []);
+
+  const mapStyle = {
+    height: "100vh",
+    width: "100%",
+    backgroundColor: "grey",
+  };
+
   return (
     <>
-      <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={false}
-        style={{ height: "200px", width: "20%", backgroundColor: "grey" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+      {userLocation ? (
+        <MapContainer
+          center={userLocation}
+          zoom={13}
+          scrollWheelZoom={false}
+          style={mapStyle}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={userLocation}>
+            <Popup>
+              ¡Hola! Estás aquí. <br /> Esto es personalizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      ) : (
+        <p>Obteniendo la ubicación del usuario...</p>
+      )}
     </>
   );
 }
+
 export default Map;

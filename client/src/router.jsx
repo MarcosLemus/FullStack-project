@@ -9,11 +9,10 @@ import CustomersPage from "./pages/CustomerPage";
 import AddCustomerPage from "./pages/AddCustomerPage";
 import EditCustomerPage from "./pages/EditCustomerPage";
 import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
 import LogoutPage from "./pages/LogoutPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
-
-const WorkdaysPage = () => <h1>workdays</h1>;
 
 const router = createBrowserRouter([
   {
@@ -23,11 +22,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProtectedRoute page={WorkdaysPage} role="auth" />,
+        element: <ProtectedRoute page={HomePage} role="auth" />,
       },
       {
         path: "/customers",
-        element: <CustomersPage />,
+        element: <ProtectedRoute page={CustomersPage} role="admin" />,
       },
       {
         path: "/customer/new",

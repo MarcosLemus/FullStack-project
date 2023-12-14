@@ -35,7 +35,6 @@ export default function CustomerPage() {
 
   return (
     <>
-      <Map />
       <Stack spacing={3}>
         <Stack direction="row" justifyContent="space-between">
           <Button

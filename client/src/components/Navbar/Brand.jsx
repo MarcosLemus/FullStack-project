@@ -22,7 +22,7 @@ function Brand() {
           textDecoration: "none",
         }}
       >
-        RIDERS
+        EthicalEats
       </Typography>
     </>
   );

@@ -27,7 +27,7 @@ function Navbar() {
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
 
-  const optionsMainMenu = [{ label: "Customers", to: "/" }];
+  const optionsMainMenu = [{ label: "Customers", to: "/customers" }];
   const optionsUserMenu = user.auth
     ? [{ label: "Logout", to: "/logout" }]
     : [

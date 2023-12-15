@@ -1,12 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { Typography } from "@mui/material";
 
-import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
-
 function Brand() {
   return (
     <>
-      <DirectionsBikeIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
       <Typography
         variant="h6"
         noWrap

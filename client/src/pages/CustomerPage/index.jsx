@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Link } from "react-router-dom";
 
-import Map from "../../components/Map";
 import { Stack, Button, Typography, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Add } from "@mui/icons-material";
@@ -45,38 +44,6 @@ export default function CustomerPage() {
             to="/customer/new"
           >
             New client
-          </Button>
-          <Button
-            variant="contained"
-            component={Link}
-            to={"/my_route"}
-            sx={{
-              ml: "3rem",
-              backgroundColor: "#FDE047",
-              "&:hover": {
-                background: "#FDE047",
-              },
-              boxShadow: "none",
-              color: "black",
-            }}
-          >
-            Show list
-          </Button>
-          <Button
-            variant="contained"
-            component={Link}
-            sx={{
-              ml: "3rem",
-              backgroundColor: "#FDE047",
-              "&:hover": {
-                background: "#FDE047",
-              },
-
-              boxShadow: "none",
-              color: "black",
-            }}
-          >
-            Show view
           </Button>
         </Stack>
       </Stack>

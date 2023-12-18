@@ -10,12 +10,17 @@ const fields = [
   {
     name: "latitude",
     label: "Latitud",
-    type: "number",
+    type: "string",
   },
   {
     name: "longitude",
     label: "Longitud",
-    type: "number",
+    type: "string",
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "añadir una decripción",
   },
 ];
 
@@ -25,12 +30,13 @@ const schema = yup
       .string()
 
       .required("Nombre obligatorio"),
-    latitude: yup.number().typeError("Latitud obligatoria").required(),
-    longitude: yup.number().typeError("Longitud obligatoria").required(),
+    latitude: yup.string().typeError("Latitud obligatoria").required(),
+    longitude: yup.string().typeError("Longitud obligatoria").required(),
+    description: yup.string().required("Descripción obligatoria"),
   })
   .required();
 
 const getDefaultValues = (customer) =>
-  _.pick(customer, ["name", "latitude", "longitude"]);
+  _.pick(customer, ["name", "latitude", "longitude", "description"]);
 
 export { fields, schema, getDefaultValues };

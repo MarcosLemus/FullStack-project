@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import parse from "autosuggest-highlight/parse";
 import { debounce } from "@mui/material/utils";
 
-// const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+const googleApiKey = import.meta.env.VITE_API_GOOGLE_API_KEY;
 
 function loadScript(src, position, id) {
   if (!position) {
@@ -29,14 +29,14 @@ export default function GoogleMaps() {
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
-
+  console.log(loaded.current);
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
-      //   loadScript(
-      //     `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places`,
-      //     document.querySelector("head"),
-      //     "google-maps"
-      //   );
+      loadScript(
+        `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places`,
+        document.querySelector("head"),
+        "google-maps"
+      );
     }
 
     loaded.current = true;
@@ -90,7 +90,7 @@ export default function GoogleMaps() {
   return (
     <Autocomplete
       id="google-map-demo"
-      sx={{ width: 300 }}
+      sx={{ width: 250 }}
       getOptionLabel={(option) =>
         typeof option === "string" ? option : option.description
       }
@@ -109,7 +109,17 @@ export default function GoogleMaps() {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Add a location" fullWidth />
+        <TextField
+          {...params}
+          label="Add a location"
+          variant="outlined" // Use outlined variant for a more conventional input appearance
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "10px",
+            height: "3rem",
+          }}
+          fullWidth
+        />
       )}
       renderOption={(props, option) => {
         const matches =
@@ -134,7 +144,9 @@ export default function GoogleMaps() {
                   <Box
                     key={index}
                     component="span"
-                    sx={{ fontWeight: part.highlight ? "bold" : "regular" }}
+                    sx={{
+                      fontWeight: part.highlight ? "bold" : "regular",
+                    }}
                   >
                     {part.text}
                   </Box>

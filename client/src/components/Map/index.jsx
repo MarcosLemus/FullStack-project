@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function Map() {
   const [userLocation, setUserLocation] = useState(null); // Inicialmente, no conocemos la ubicación del usuario
+  const [placeLocation, setPlaceLocation] = useState(null);
 
   useEffect(() => {
     // Función para obtener la ubicación del usuario
@@ -50,6 +51,7 @@ function Map() {
               ¡Hola! Estás aquí. <br /> Esto es personalizable.
             </Popup>
           </Marker>
+          <Marker position={[37.400377097828475, -5.991872754782091]}> </Marker>
         </MapContainer>
       ) : (
         <p>Obteniendo la ubicación del usuario...</p>

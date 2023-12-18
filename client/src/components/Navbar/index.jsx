@@ -7,8 +7,6 @@ import {
   IconButton,
   Container,
   Avatar,
-  Input,
-  Autocomplete,
   Button,
   Tooltip,
 } from "@mui/material";
@@ -31,7 +29,7 @@ function Navbar() {
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
 
-  const optionsMainMenu = [{ label: "Customers", to: "/customers" }];
+  const optionsMainMenu = [{ label: "Bussiness", to: "/customers" }];
   const optionsUserMenu = user.auth
     ? [{ label: "Logout", to: "/logout" }]
     : [
@@ -64,8 +62,8 @@ function Navbar() {
             options={optionsMainMenu}
             onClose={() => setAnchorElNav(null)}
           />
-          <Input sx={{ backgroundColor: "white", borderRadius: "10px" }} />
-          {/* <GoogleMaps /> */}
+
+          <GoogleMaps />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

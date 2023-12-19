@@ -8,6 +8,8 @@ import customerService from "services/customer-service";
 
 import { fields, schema } from "./form-data";
 
+import GoogleMaps from "src/components/Navbar/autocomplete";
+
 export default function AddCustomerPage() {
   const [errorsFromResponse, setErrorsFromResponse] = useState([]);
 
@@ -28,6 +30,7 @@ export default function AddCustomerPage() {
         <Typography variant="h2" component="h2">
           Añadir nuevo cliente
         </Typography>
+        <GoogleMaps />
         <Form
           inputs={fields}
           onSubmit={onSubmit}

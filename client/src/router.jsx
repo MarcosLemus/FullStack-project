@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage";
 import LogoutPage from "./pages/LogoutPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import DetailsPage from "./pages/DetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <ProtectedRoute page={HomePage} role="auth" />,
+      },
+      {
+        path: "/details",
+        element: <ProtectedRoute page={DetailsPage} role="auth" />,
       },
       {
         path: "/customers",

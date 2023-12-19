@@ -9,7 +9,7 @@ function RootLayout() {
     <Container display="flex" maxWidth="xxl" disableGutters>
       <Navbar />
 
-      <Container maxWidth="xl" sx={{ mt: 5 }}>
+      <Container maxWidth="xl" sx={{ mt: 15 }}>
         <Outlet />
       </Container>
 

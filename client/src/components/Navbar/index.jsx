@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   AppBar,
@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from "@mui/material";
 
-import GoogleMaps from "./autocomplete";
+import Searchbox from "./searchbox";
 
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -25,9 +25,23 @@ function Navbar() {
   const [user] = useAuth();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [places, setPlaces] = useState([]);
 
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
+  useEffect(() => {
+    const getPlacesFromApi = async () => {
+      try {
+        const response = await fetch("http://localhost:4040/api/places");
+        const data = await response.json();
+        setPlaces(data);
+      } catch (error) {
+        console.error("Error getting places from API:", error);
+      }
+    };
+
+    getPlacesFromApi();
+  }, []);
 
   const optionsMainMenu = [{ label: "Bussiness", to: "/customers" }];
   const optionsUserMenu = user.auth
@@ -38,7 +52,7 @@ function Navbar() {
       ];
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="fixed" color="primary">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Brand />
@@ -51,6 +65,7 @@ function Navbar() {
             >
               <MenuIcon />
             </IconButton>
+
             <CollapseMenu
               anchor={anchorElNav}
               onClose={() => setAnchorElNav(null)}
@@ -62,8 +77,7 @@ function Navbar() {
             options={optionsMainMenu}
             onClose={() => setAnchorElNav(null)}
           />
-
-          <GoogleMaps />
+          <Searchbox />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

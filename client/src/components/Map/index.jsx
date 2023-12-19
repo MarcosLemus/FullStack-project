@@ -55,21 +55,6 @@ function Map() {
     getPlacesFromApi();
   }, []);
 
-  const onMapLoad = (map) => {
-    setMap(map);
-
-    // Ocultar marcadores predeterminados de Google Maps
-    const hideDefaultMarkers = () => {
-      const defaultMarkers = map.getMarkers();
-      defaultMarkers.forEach((marker) => {
-        marker.setMap(null);
-      });
-    };
-
-    // Llamar a la función después de un breve retraso para asegurar que los marcadores se hayan cargado completamente
-    setTimeout(hideDefaultMarkers, 1000);
-  };
-
   const onMarkerClick = (place) => () => {
     if (infoWindow) {
       infoWindow.close();
@@ -108,20 +93,19 @@ function Map() {
         <GoogleMap
           center={userLocation}
           zoom={13}
-          onLoad={onMapLoad}
           mapContainerStyle={{
+            position: "absolute",
             height: "100vh",
-            width: "100%",
-            border: "1px solid red",
-            marginTop: 30,
-            padding: 0,
+            width: "100vw",
+            top: 0,
+            left: 0,
           }}
         >
           {/* Marcador para la ubicación del usuario */}
-          <Marker
+          {/* <Marker
             position={userLocation}
             onClick={onMarkerClick({ name: "User Location" })}
-          />
+          /> */}
 
           {/* Marcadores para lugares filtrados */}
           {places.map((place) => (
@@ -146,7 +130,7 @@ function Map() {
               <div>
                 <h3>{hoveredPlace.name}</h3>
                 <p>{hoveredPlace.description}</p>
-                <Link to="/otra-pagina">Ver detalles</Link>
+                <Link to="/details">Ver detalles</Link>
               </div>
             </InfoWindow>
           )}

@@ -38,7 +38,7 @@ router.put(
   validate,
   placeController.update
 );
-router.put("/:placeId/:userId/favorite", auth, placeController.toggleFavorite);
+router.put("/:placeId/favorite", auth, placeController.toggleFavorite);
 
 router.delete(
   "/:placeId",

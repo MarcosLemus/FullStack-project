@@ -8,41 +8,25 @@ import {
   TextField,
 } from "@mui/material";
 
+import { usePlace, useComment } from "hooks";
+
+import placeService from "src/services/place-service";
+
 const PlaceDetailsPage = () => {
   const { placeId } = useParams(); // Obtén el ID del lugar desde la URL
+  const { place, loading } = usePlace(placeId);
+  const { comment, setComment } = useComment(comment);
+  console.log(placeId);
 
-  const [placeDetails, setPlaceDetails] = useState(null);
-  const [likes, setLikes] = useState(0);
-  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
-
-  useEffect(() => {
-    const getPlaceDetails = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:4040/api/places/${placeId}`
-        );
-        const data = await response.json();
-        setPlaceDetails(data);
-        setLikes(data.likes.length); // Establecer los likes iniciales
-      } catch (error) {
-        console.error("Error getting place details from API:", error);
-      }
-    };
-
-    getPlaceDetails();
-  }, [placeId]);
 
   const handleLike = async () => {
     try {
       // Realizar una solicitud a tu API para manejar el toggle de likes
-      const response = await fetch(
-        `http://localhost:4040/api/toggleFavorite/${userId}/${placeId}`
-      );
+      const likes = placeService.toggleFavorite();
       const updatedPlace = await response.json();
 
       // Actualizar el estado de likes en el frontend
-      setLikes(updatedPlace.likes.length);
     } catch (error) {
       console.error("Error toggling like:", error);
     }
@@ -54,22 +38,22 @@ const PlaceDetailsPage = () => {
 
   const handleAddComment = () => {
     // Aquí puedes implementar la lógica para agregar un nuevo comentario
-    setComments([...comments, newComment]);
+    setComment([...comment, newComment]);
     setNewComment("");
   };
 
   return (
     <div>
-      {placeDetails && (
+      {place && (
         <Card>
           <CardContent>
-            <Typography variant="h5">{placeDetails.name}</Typography>
+            <Typography variant="h5">{place.name}</Typography>
             {/* Mostrar detalles adicionales según sea necesario */}
-            <Typography variant="body1">{placeDetails.description}</Typography>
+            <Typography variant="body1">{place.description}</Typography>
 
-            <Button variant="outlined" color="primary" onClick={handleLike}>
+            {/* <Button variant="outlined" color="primary" onClick={handleLike}>
               Likes: {likes}
-            </Button>
+            </Button> */}
 
             <div>
               <TextField

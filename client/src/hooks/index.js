@@ -1,3 +1,4 @@
-export { default as useCustomers } from "./useCustomers";
-export { default as useCustomer } from "./useCustomer";
+export { default as usePlaces } from "./useplaces";
+export { default as usePlace } from "./usePlace";
+export { default as useComment } from "./useComment";
 export { AuthProvider, useAuth } from "./auth";

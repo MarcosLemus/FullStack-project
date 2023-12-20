@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import {
   GoogleMap,
   Marker,
@@ -8,12 +9,15 @@ import {
 } from "@react-google-maps/api";
 
 const googleApiKey = import.meta.env.VITE_API_GOOGLE_API_KEY;
-
+import { usePlaces, usePlace } from "hooks";
 const libraries = ["places"];
 
 function Map() {
+  const { places, loading } = usePlaces();
+  const { place } = usePlace();
+
   const [userLocation, setUserLocation] = useState(null);
-  const [places, setPlaces] = useState([]);
+
   const [map, setMap] = useState(null);
   const [infoWindow, setInfoWindow] = useState(null);
   const [hoveredPlace, setHoveredPlace] = useState(null);
@@ -41,18 +45,7 @@ function Map() {
       }
     };
 
-    const getPlacesFromApi = async () => {
-      try {
-        const response = await fetch("http://localhost:4040/api/places");
-        const data = await response.json();
-        setPlaces(data);
-      } catch (error) {
-        console.error("Error getting places from API:", error);
-      }
-    };
-
     getUserLocation();
-    getPlacesFromApi();
   }, []);
 
   const onMarkerClick = (place) => () => {
@@ -78,10 +71,6 @@ function Map() {
     setHoveredPlace(place);
   };
 
-  const onMarkerMouseOut = () => {
-    setHoveredPlace(null);
-  };
-
   const markerRef = React.useRef();
 
   if (loadError) return "Error loading maps";
@@ -101,12 +90,6 @@ function Map() {
             left: 0,
           }}
         >
-          {/* Marcador para la ubicación del usuario */}
-          {/* <Marker
-            position={userLocation}
-            onClick={onMarkerClick({ name: "User Location" })}
-          /> */}
-
           {/* Marcadores para lugares filtrados */}
           {places.map((place) => (
             <Marker
@@ -130,7 +113,7 @@ function Map() {
               <div>
                 <h3>{hoveredPlace.name}</h3>
                 <p>{hoveredPlace.description}</p>
-                <Link to="/details">Ver detalles</Link>
+                <Link to={`/details/${hoveredPlace._id}`}>Ver detalles</Link>
               </div>
             </InfoWindow>
           )}

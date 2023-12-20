@@ -34,7 +34,7 @@ const logout = () => {
 
 const getCurrentUser = () => {
   try {
-    const token = localStorage.setItem(tokenKey);
+    const token = localStorage.getItem(tokenKey);
     if (!token) return null;
     setToken(token);
 

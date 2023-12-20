@@ -39,9 +39,12 @@ const update = async (req, res) => {
 };
 
 const toggleFavorite = async (req, res) => {
-  const { userId, placeId } = req.params;
+  const { placeId } = req.params;
 
   const place = await Place.findById(placeId);
+
+  const userId = req.user._id;
+  console.log(userId);
 
   const index = place.likes.indexOf(userId);
   place.likes =

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Si estás utilizando React Router
+import { useParams } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -8,25 +8,23 @@ import {
   TextField,
 } from "@mui/material";
 
-import { usePlace, useComment } from "hooks";
-
+import { usePlace } from "hooks";
 import placeService from "src/services/place-service";
 
 const PlaceDetailsPage = () => {
-  const { placeId } = useParams(); // Obtén el ID del lugar desde la URL
-  const { place, loading } = usePlace(placeId);
-  const { comment, setComment } = useComment(comment);
-  console.log(placeId);
-
+  const { placeId } = useParams();
+  const { place, loading, setPlace } = usePlace(placeId);
+  console.log(place);
   const [newComment, setNewComment] = useState("");
 
   const handleLike = async () => {
     try {
       // Realizar una solicitud a tu API para manejar el toggle de likes
-      const likes = placeService.toggleFavorite();
-      const updatedPlace = await response.json();
+      const likes = await placeService.toggleFavorite(placeId).then(() => {
+        setPlace(likes);
+      });
 
-      // Actualizar el estado de likes en el frontend
+      // Recargar la información del lugar después de cambiar el estado de los likes
     } catch (error) {
       console.error("Error toggling like:", error);
     }
@@ -36,11 +34,21 @@ const PlaceDetailsPage = () => {
     setNewComment(event.target.value);
   };
 
-  const handleAddComment = () => {
-    // Aquí puedes implementar la lógica para agregar un nuevo comentario
-    setComment([...comment, newComment]);
-    setNewComment("");
+  const handleAddComment = async () => {
+    try {
+      // Realizar una solicitud a tu API para agregar un nuevo comentario
+      await place(placeId, newComment);
+
+      // Recargar la información del lugar después de agregar el comentario
+
+      // Limpiar el campo de comentario después de agregarlo
+      setNewComment("");
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
   };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -48,20 +56,20 @@ const PlaceDetailsPage = () => {
         <Card>
           <CardContent>
             <Typography variant="h5">{place.name}</Typography>
-            {/* Mostrar detalles adicionales según sea necesario */}
             <Typography variant="body1">{place.description}</Typography>
 
-            {/* <Button variant="outlined" color="primary" onClick={handleLike}>
-              Likes: {likes}
-            </Button> */}
+            <Button variant="outlined" color="primary" onClick={handleLike}>
+              Likes: {place.likes}
+            </Button>
 
             <div>
               <TextField
                 label="Nuevo comentario"
+                multiline
+                rows={3}
+                sx={{ width: "60%" }}
                 value={newComment}
                 onChange={handleCommentChange}
-                multiline
-                rows={4}
               />
               <Button
                 variant="contained"
@@ -74,11 +82,14 @@ const PlaceDetailsPage = () => {
 
             <div>
               <Typography variant="h6">Comentarios</Typography>
-              {comments.map((comment, index) => (
-                <div key={index}>
-                  <Typography variant="body2">{comment}</Typography>
-                </div>
-              ))}
+
+              <div>
+                {place.comments.map((comment, index) => (
+                  <Typography key={index} variant="body2">
+                    {comment.comment}
+                  </Typography>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>

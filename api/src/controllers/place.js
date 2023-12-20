@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
   const { placeId } = req.params;
 
-  const place = await Place.findById(placeId);
+  const place = await Place.findById(placeId).populate("comments");
   if (!place) {
     return res.status(404).json({ message: "Place not found" });
   }

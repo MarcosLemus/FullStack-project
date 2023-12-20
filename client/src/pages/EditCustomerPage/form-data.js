@@ -36,7 +36,7 @@ const schema = yup
   })
   .required();
 
-const getDefaultValues = (customer) =>
-  _.pick(customer, ["name", "latitude", "longitude", "description"]);
+const getDefaultValues = (place) =>
+  _.pick(place, ["name", "latitude", "longitude", "description"]);
 
 export { fields, schema, getDefaultValues };

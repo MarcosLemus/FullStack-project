@@ -5,9 +5,9 @@ import {
 
 import RootLayout from "layouts/RootLayout";
 import ErrorPage from "pages/ErrorPage";
-// import CustomersPage from "./pages/CustomerPage";
-// import AddCustomerPage from "./pages/AddCustomerPage";
-// import EditCustomerPage from "./pages/EditCustomerPage";
+import CustomersPage from "./pages/CustomerPage";
+import AddCustomerPage from "./pages/AddCustomerPage";
+import EditCustomerPage from "./pages/EditCustomerPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import LogoutPage from "./pages/LogoutPage";
@@ -29,18 +29,18 @@ const router = createBrowserRouter([
         path: "/details/:placeId",
         element: <DetailsPage />,
       },
-      // {
-      //   path: "/customers",
-      //   element: <ProtectedRoute page={CustomersPage} role="admin" />,
-      // },
-      // {
-      //   path: "/customer/new",
-      //   element: <ProtectedRoute page={AddCustomerPage} role="admin" />,
-      // },
-      // {
-      //   path: "/customer/edit/:customerId",
-      //   element: <ProtectedRoute page={EditCustomerPage} role="admin" />,
-      // },
+      {
+        path: "/customers",
+        element: <ProtectedRoute page={CustomersPage} role="admin" />,
+      },
+      {
+        path: "/customer/new",
+        element: <ProtectedRoute page={AddCustomerPage} role="admin" />,
+      },
+      {
+        path: "/customer/edit/:placeId",
+        element: <ProtectedRoute page={EditCustomerPage} role="admin" />,
+      },
       {
         path: "/login",
         element: <ProtectedRoute page={LoginPage} role="anonymous" />,

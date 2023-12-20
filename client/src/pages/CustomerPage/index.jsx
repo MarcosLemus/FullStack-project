@@ -5,24 +5,22 @@ import { Link } from "react-router-dom";
 import { Stack, Button, Typography, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Add } from "@mui/icons-material";
-import customerService from "services/customer-service";
+import placeService from "services/place-service";
 import { Table } from "components";
-import { useCustomers } from "hooks";
+import { usePlaces } from "hooks";
 export default function CustomerPage() {
   // const [view, setView] = useState();
   const navigate = useNavigate();
 
-  const { customers, loading, setCustomers } = useCustomers();
+  const { places, loading, setPlaces } = usePlaces();
 
-  const handleEdit = ({ _id: customerIdtoEdit }) =>
-    navigate("/customer/edit/" + customerIdtoEdit);
-  const handleDelete = ({ _id: customerIdToDelete }) => {
-    customerService
-      .delete(customerIdToDelete)
+  const handleEdit = ({ _id: placeIdtoEdit }) =>
+    navigate("/customer/edit/" + placeIdtoEdit);
+  const handleDelete = ({ _id: placeIdToDelete }) => {
+    placeService
+      .delete(placeIdToDelete)
       .then(() =>
-        setCustomers(
-          customers.filter((customer) => customer._id !== customerIdToDelete)
-        )
+        setPlaces(places.filter((place) => place._id !== placeIdToDelete))
       )
       .catch((err) => {
         if (err.response.status === 400)
@@ -72,7 +70,7 @@ export default function CustomerPage() {
             },
           },
         ]}
-        rows={customers}
+        rows={places}
         onEdit={handleEdit}
         onDelete={handleDelete}
       />

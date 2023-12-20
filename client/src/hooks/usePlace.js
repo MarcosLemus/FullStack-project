@@ -13,7 +13,7 @@ function usePlace(placeId) {
       .catch((errors) => setErrors(errors))
       .finally(() => setLoading(false));
   }, []);
-  return { place, loading, errors };
+  return { place, loading, errors, setPlace };
 }
 
 export default usePlace;

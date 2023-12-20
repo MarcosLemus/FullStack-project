@@ -6,21 +6,22 @@ import { useParams } from "react-router-dom";
 
 import { Form } from "components";
 
-import customerService from "services/customer-service";
+import placeService from "services/place-service";
 
-import { useCustomer } from "hooks";
+import { usePlace } from "hooks";
 
 import { fields, schema, getDefaultValues } from "./form-data";
 
 export default function EditCustomerPage() {
-  const { customerId } = useParams();
+  const { placeId } = useParams();
+  console.log(placeId);
 
-  const { customer, loading } = useCustomer(customerId);
+  const { place, loading } = usePlace(placeId);
   const [errorsFromResponse, setErrorsFromResponse] = useState([]);
 
-  const onSubmit = (customer) => {
-    customerService
-      .update(customerId, customer)
+  const onSubmit = (place) => {
+    placeService
+      .update(placeId, place)
       .then(() => {})
       .catch((err) => {
         if (err.response.status === 400)
@@ -28,7 +29,7 @@ export default function EditCustomerPage() {
       });
   };
   if (loading) return <CircularProgress />;
-  console.log(customer, "cusfdgfh");
+  console.log(place, "cusfdgfh");
 
   return (
     <>
@@ -42,7 +43,7 @@ export default function EditCustomerPage() {
           validationSchema={schema}
           errorsFromResponse={errorsFromResponse}
           submitLabel="Editar"
-          defaultValues={getDefaultValues(customer)}
+          defaultValues={getDefaultValues(place)}
         />
       </Stack>
     </>

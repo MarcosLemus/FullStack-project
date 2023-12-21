@@ -18,7 +18,7 @@ router.get(
 );
 
 router.post(
-  "/:placeId",
+  "/",
   auth,
   commentValidationSchema,
   validate,

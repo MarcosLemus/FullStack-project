@@ -33,14 +33,14 @@ const getOne = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { date, comment } = req.body;
+    const { date, comment, placeId } = req.body;
 
     // Crear un nuevo comentario asociado al usuario y lugar
     const newComment = await Comment.create({
       comment,
       date,
       usercomment: req.user._id,
-      placeComment: req.params.placeId, // Usar el placeId del req.params
+      placeComment: placeId, // Usar el placeId del req.params
     });
 
     // Vincular el comentario con el lugar
@@ -48,7 +48,7 @@ const create = async (req, res) => {
 
     // Actualizar el lugar para incluir el ID del comentario
     await Place.findByIdAndUpdate(
-      req.params.placeId,
+      placeId,
       { $push: { comments: commentId } },
       { new: true }
     );

@@ -20,10 +20,11 @@ export default function LoginPage() {
   const onSubmit = (user) => {
     login(user)
       .then((decodedJWT) => {
-        const { username, isAdmin } = decodedJWT;
+        console.log(decodedJWT);
+        const { username, isAdmin, _id } = decodedJWT;
 
         const type = isAdmin ? "admin" : "login";
-        dispatch({ type, username });
+        dispatch({ type, username, _id });
         navigate("/", { replace: true });
       })
       .catch((err) => {

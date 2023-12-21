@@ -14,17 +14,32 @@ import placeService from "src/services/place-service";
 const PlaceDetailsPage = () => {
   const { placeId } = useParams();
   const { place, loading, setPlace } = usePlace(placeId);
-  console.log(place);
+
   const [newComment, setNewComment] = useState("");
+  const [faved, setFaved] = useState([]);
+
+  useEffect(() => {
+    // Actualizar el estado local del lugar cuando cambian los favoritos
+    if (place) {
+      if (faved.length > -1) {
+        // Si hay likes, actualiza el estado local con "Me gusta illo"
+        place.likes = "me lo estoy pensando";
+      } else {
+        // Si no hay likes, actualiza el estado local con "me lo estoy pensando"
+        place.likes = "Me gusta illo";
+      }
+      // Actualizar el estado local del lugar
+      setPlace({ ...place });
+    }
+  }, [faved, place, setPlace]);
 
   const handleLike = async () => {
     try {
       // Realizar una solicitud a tu API para manejar el toggle de likes
-      const likes = await placeService.toggleFavorite(placeId).then(() => {
-        setPlace(likes);
-      });
+      const likes = await placeService.toggleFavorite(placeId);
 
-      // Recargar la información del lugar después de cambiar el estado de los likes
+      // Actualizar el estado local y global de favoritos
+      setFaved(likes);
     } catch (error) {
       console.error("Error toggling like:", error);
     }
@@ -37,9 +52,12 @@ const PlaceDetailsPage = () => {
   const handleAddComment = async () => {
     try {
       // Realizar una solicitud a tu API para agregar un nuevo comentario
-      await place(placeId, newComment);
+      // (Asumo que `placeService.addComment` es el método correcto)
+      await placeService.addComment(placeId, newComment);
 
       // Recargar la información del lugar después de agregar el comentario
+      // (Asumo que `usePlace` maneja esto internamente)
+      setPlace(usePlace(placeId));
 
       // Limpiar el campo de comentario después de agregarlo
       setNewComment("");
